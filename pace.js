@@ -12992,7 +12992,7 @@ var _elm_lang$http$Http$StringPart = F2(
 	});
 var _elm_lang$http$Http$stringPart = _elm_lang$http$Http$StringPart;
 
-var _tygerbytes$pacebyelm$Pacebyelm$viewTargetPacePanel = A2(
+var _tygerbytes$pacebyelm$TargetPace$viewTargetPacePanel = A2(
 	_elm_lang$html$Html$div,
 	{
 		ctor: '::',
@@ -13414,6 +13414,7 @@ var _tygerbytes$pacebyelm$Pacebyelm$viewTargetPacePanel = A2(
 			}
 		}
 	});
+
 var _tygerbytes$pacebyelm$Pacebyelm$viewFooter = A2(
 	_elm_lang$html$Html$footer,
 	{
@@ -14286,7 +14287,7 @@ var _tygerbytes$pacebyelm$Pacebyelm$view = function (model) {
 									},
 									{
 										ctor: '::',
-										_0: _tygerbytes$pacebyelm$Pacebyelm$viewTargetPacePanel,
+										_0: _tygerbytes$pacebyelm$TargetPace$viewTargetPacePanel,
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
