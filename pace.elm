@@ -8,6 +8,9 @@ import Json.Decode as Decode exposing (Decoder, field, succeed)
 import Json.Encode as Encode
 
 import TargetPace
+import RunType
+
+
 
 -- MODEL
 
@@ -102,7 +105,6 @@ viewToggleButtons =
       ]
 
 
-
 viewStatsForm : Html Msg
 viewStatsForm =
       div [ id "calc_pace" ]
@@ -125,28 +127,7 @@ viewStatsForm =
                     , text ""
                     ]
                 ]
-            , div [ class "form-group" ]
-                [ label [ for "run_type" ]
-                    [ text "Run type:" ]
-                , div [ class "input-group" ]
-                    [ span [ class "input-group-addon" ]
-                        [ text "🏃" ]
-                    , select [ class "form-control", id "run_type", name "run_type" ]
-                        [ option [ value "DistanceRun" ]
-                            [ text "Distance Run" ]
-                        , option [ attribute "selected" "selected", value "EasyRun" ]
-                            [ text "Easy Run" ]
-                        , option [ value "FastTempoRun" ]
-                            [ text "Fast Tempo Run" ]
-                        , option [ value "LongRun" ]
-                            [ text "Long Run" ]
-                        , option [ value "SlowTempoRun" ]
-                            [ text "Slow Tempo Run" ]
-                        , option [ value "TempoRun" ]
-                            [ text "Tempo Run" ]
-                        ]
-                    ]
-                ]
+            , RunType.viewRunTypes RunType.runTypes
             , div [ class "form-group hidden", id "form_field_units" ]
                 [ label [ for "units" ]
                     [ text "Units:" ]

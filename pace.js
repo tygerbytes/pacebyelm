@@ -13415,6 +13415,121 @@ var _tygerbytes$pacebyelm$TargetPace$viewTargetPacePanel = A2(
 		}
 	});
 
+var _tygerbytes$pacebyelm$RunType$viewRunTypeItem = function (runType) {
+	return A2(
+		_elm_lang$html$Html$option,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$value(runType.name),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(runType.description),
+			_1: {ctor: '[]'}
+		});
+};
+var _tygerbytes$pacebyelm$RunType$viewRunTypes = function (runTypes) {
+	var types = A2(_elm_lang$core$List$map, _tygerbytes$pacebyelm$RunType$viewRunTypeItem, runTypes);
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('form-group'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$label,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$for('run_type'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('Run type:'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('input-group'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$span,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('input-group-addon'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('🏃'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$select,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('form-control'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$id('run_type'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$name('run_type'),
+											_1: {ctor: '[]'}
+										}
+									}
+								},
+								types),
+							_1: {ctor: '[]'}
+						}
+					}),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _tygerbytes$pacebyelm$RunType$RunType = F2(
+	function (a, b) {
+		return {name: a, description: b};
+	});
+var _tygerbytes$pacebyelm$RunType$runTypes = {
+	ctor: '::',
+	_0: A2(_tygerbytes$pacebyelm$RunType$RunType, 'DistanceRun', 'Distance Run'),
+	_1: {
+		ctor: '::',
+		_0: A2(_tygerbytes$pacebyelm$RunType$RunType, 'EasyRun', 'Easy Run'),
+		_1: {
+			ctor: '::',
+			_0: A2(_tygerbytes$pacebyelm$RunType$RunType, 'FastTempoRun', 'Fast Tempo Run'),
+			_1: {
+				ctor: '::',
+				_0: A2(_tygerbytes$pacebyelm$RunType$RunType, 'LongRun', 'Long Run'),
+				_1: {
+					ctor: '::',
+					_0: A2(_tygerbytes$pacebyelm$RunType$RunType, 'SlowTempoRun', 'Slow Tempo Run'),
+					_1: {
+						ctor: '::',
+						_0: A2(_tygerbytes$pacebyelm$RunType$RunType, 'TempoRun', 'Tempo Run'),
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		}
+	}
+};
+
 var _tygerbytes$pacebyelm$Pacebyelm$viewFooter = A2(
 	_elm_lang$html$Html$footer,
 	{
@@ -13637,168 +13752,7 @@ var _tygerbytes$pacebyelm$Pacebyelm$viewStatsForm = A2(
 								}),
 							_1: {
 								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$div,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('form-group'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$label,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$for('run_type'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text('Run type:'),
-												_1: {ctor: '[]'}
-											}),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$div,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$class('input-group'),
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$span,
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$class('input-group-addon'),
-															_1: {ctor: '[]'}
-														},
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html$text('🏃'),
-															_1: {ctor: '[]'}
-														}),
-													_1: {
-														ctor: '::',
-														_0: A2(
-															_elm_lang$html$Html$select,
-															{
-																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$class('form-control'),
-																_1: {
-																	ctor: '::',
-																	_0: _elm_lang$html$Html_Attributes$id('run_type'),
-																	_1: {
-																		ctor: '::',
-																		_0: _elm_lang$html$Html_Attributes$name('run_type'),
-																		_1: {ctor: '[]'}
-																	}
-																}
-															},
-															{
-																ctor: '::',
-																_0: A2(
-																	_elm_lang$html$Html$option,
-																	{
-																		ctor: '::',
-																		_0: _elm_lang$html$Html_Attributes$value('DistanceRun'),
-																		_1: {ctor: '[]'}
-																	},
-																	{
-																		ctor: '::',
-																		_0: _elm_lang$html$Html$text('Distance Run'),
-																		_1: {ctor: '[]'}
-																	}),
-																_1: {
-																	ctor: '::',
-																	_0: A2(
-																		_elm_lang$html$Html$option,
-																		{
-																			ctor: '::',
-																			_0: A2(_elm_lang$html$Html_Attributes$attribute, 'selected', 'selected'),
-																			_1: {
-																				ctor: '::',
-																				_0: _elm_lang$html$Html_Attributes$value('EasyRun'),
-																				_1: {ctor: '[]'}
-																			}
-																		},
-																		{
-																			ctor: '::',
-																			_0: _elm_lang$html$Html$text('Easy Run'),
-																			_1: {ctor: '[]'}
-																		}),
-																	_1: {
-																		ctor: '::',
-																		_0: A2(
-																			_elm_lang$html$Html$option,
-																			{
-																				ctor: '::',
-																				_0: _elm_lang$html$Html_Attributes$value('FastTempoRun'),
-																				_1: {ctor: '[]'}
-																			},
-																			{
-																				ctor: '::',
-																				_0: _elm_lang$html$Html$text('Fast Tempo Run'),
-																				_1: {ctor: '[]'}
-																			}),
-																		_1: {
-																			ctor: '::',
-																			_0: A2(
-																				_elm_lang$html$Html$option,
-																				{
-																					ctor: '::',
-																					_0: _elm_lang$html$Html_Attributes$value('LongRun'),
-																					_1: {ctor: '[]'}
-																				},
-																				{
-																					ctor: '::',
-																					_0: _elm_lang$html$Html$text('Long Run'),
-																					_1: {ctor: '[]'}
-																				}),
-																			_1: {
-																				ctor: '::',
-																				_0: A2(
-																					_elm_lang$html$Html$option,
-																					{
-																						ctor: '::',
-																						_0: _elm_lang$html$Html_Attributes$value('SlowTempoRun'),
-																						_1: {ctor: '[]'}
-																					},
-																					{
-																						ctor: '::',
-																						_0: _elm_lang$html$Html$text('Slow Tempo Run'),
-																						_1: {ctor: '[]'}
-																					}),
-																				_1: {
-																					ctor: '::',
-																					_0: A2(
-																						_elm_lang$html$Html$option,
-																						{
-																							ctor: '::',
-																							_0: _elm_lang$html$Html_Attributes$value('TempoRun'),
-																							_1: {ctor: '[]'}
-																						},
-																						{
-																							ctor: '::',
-																							_0: _elm_lang$html$Html$text('Tempo Run'),
-																							_1: {ctor: '[]'}
-																						}),
-																					_1: {ctor: '[]'}
-																				}
-																			}
-																		}
-																	}
-																}
-															}),
-														_1: {ctor: '[]'}
-													}
-												}),
-											_1: {ctor: '[]'}
-										}
-									}),
+								_0: _tygerbytes$pacebyelm$RunType$viewRunTypes(_tygerbytes$pacebyelm$RunType$runTypes),
 								_1: {
 									ctor: '::',
 									_0: A2(
