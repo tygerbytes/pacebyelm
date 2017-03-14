@@ -16,6 +16,7 @@ import RunType
 type alias Model =
     { fiveKTime : String
     , toggles : List StatsToggle
+    , runTypes : List RunType.RunType
     }
 
 
@@ -23,6 +24,7 @@ initialModel : Model
 initialModel =
     { fiveKTime = "25:00"
     , toggles = initialToggles
+    , runTypes = RunType.runTypes
     }
 
 
@@ -137,8 +139,8 @@ viewToggleButtons toggles =
             ]
 
 
-viewStatsForm : Html Msg
-viewStatsForm =
+viewStatsForm : Model -> Html Msg
+viewStatsForm model =
     div [ id "calc_pace" ]
         [ Html.form [ attribute "accept-charset" "UTF-8", action "/target_pace/calc", attribute "data-remote" "true", method "post" ]
             [ input [ name "utf8", type_ "hidden", value "✓" ]
@@ -159,7 +161,7 @@ viewStatsForm =
                     , text ""
                     ]
                 ]
-            , RunType.viewRunTypes RunType.runTypes
+            , RunType.viewRunTypes model.runTypes
             , div [ class "form-group hidden", id "form_field_units" ]
                 [ label [ for "units" ]
                     [ text "Units:" ]
@@ -210,7 +212,7 @@ view model =
                 [ h2 []
                     [ text "Your stats and targets" ]
                 , viewToggleButtons model.toggles
-                , viewStatsForm
+                , viewStatsForm model
                 ]
             , div [ class "col-md-6" ]
                 [ TargetPace.viewTargetPacePanel ]

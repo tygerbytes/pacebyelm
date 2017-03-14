@@ -13586,154 +13586,311 @@ var _tygerbytes$pacebyelm$Pacebyelm$viewFooter = A2(
 			}),
 		_1: {ctor: '[]'}
 	});
-var _tygerbytes$pacebyelm$Pacebyelm$viewStatsForm = A2(
-	_elm_lang$html$Html$div,
-	{
-		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$id('calc_pace'),
-		_1: {ctor: '[]'}
-	},
-	{
-		ctor: '::',
-		_0: A2(
-			_elm_lang$html$Html$form,
-			{
-				ctor: '::',
-				_0: A2(_elm_lang$html$Html_Attributes$attribute, 'accept-charset', 'UTF-8'),
-				_1: {
+var _tygerbytes$pacebyelm$Pacebyelm$viewStatsForm = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$id('calc_pace'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$form,
+				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$action('/target_pace/calc'),
+					_0: A2(_elm_lang$html$Html_Attributes$attribute, 'accept-charset', 'UTF-8'),
 					_1: {
 						ctor: '::',
-						_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-remote', 'true'),
+						_0: _elm_lang$html$Html_Attributes$action('/target_pace/calc'),
 						_1: {
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$method('post'),
-							_1: {ctor: '[]'}
-						}
-					}
-				}
-			},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$input,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$name('utf8'),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$type_('hidden'),
+							_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-remote', 'true'),
 							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$value('✓'),
+								_0: _elm_lang$html$Html_Attributes$method('post'),
 								_1: {ctor: '[]'}
 							}
 						}
-					},
-					{ctor: '[]'}),
-				_1: {
+					}
+				},
+				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text(''),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$input,
-							{
+					_0: A2(
+						_elm_lang$html$Html$input,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$name('utf8'),
+							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$id('activated_toggles'),
+								_0: _elm_lang$html$Html_Attributes$type_('hidden'),
 								_1: {
 									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$name('activated_toggles'),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$type_('hidden'),
-										_1: {
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$value(''),
-											_1: {ctor: '[]'}
-										}
-									}
+									_0: _elm_lang$html$Html_Attributes$value('✓'),
+									_1: {ctor: '[]'}
 								}
-							},
-							{ctor: '[]'}),
+							}
+						},
+						{ctor: '[]'}),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(''),
 						_1: {
 							ctor: '::',
 							_0: A2(
-								_elm_lang$html$Html$div,
+								_elm_lang$html$Html$input,
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('form-group'),
-									_1: {ctor: '[]'}
+									_0: _elm_lang$html$Html_Attributes$id('activated_toggles'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$name('activated_toggles'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$type_('hidden'),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$value(''),
+												_1: {ctor: '[]'}
+											}
+										}
+									}
 								},
-								{
+								{ctor: '[]'}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('form-group'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$label,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$for('five_k_time'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text('5K time:'),
+												_1: {ctor: '[]'}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$div,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$class('input-group'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$span,
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$class('input-group-addon'),
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: A2(
+																_elm_lang$html$Html$span,
+																{
+																	ctor: '::',
+																	_0: _elm_lang$html$Html_Attributes$class('glyphicon glyphicon-heart-empty'),
+																	_1: {ctor: '[]'}
+																},
+																{ctor: '[]'}),
+															_1: {ctor: '[]'}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$input,
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html_Attributes$class('form-control'),
+																_1: {
+																	ctor: '::',
+																	_0: _elm_lang$html$Html_Attributes$id('five_k_time'),
+																	_1: {
+																		ctor: '::',
+																		_0: _elm_lang$html$Html_Attributes$name('five_k_time'),
+																		_1: {
+																			ctor: '::',
+																			_0: _elm_lang$html$Html_Attributes$placeholder('Your most recent 5K race time; example, 21:30'),
+																			_1: {
+																				ctor: '::',
+																				_0: _elm_lang$html$Html_Attributes$type_('text'),
+																				_1: {
+																					ctor: '::',
+																					_0: _elm_lang$html$Html_Attributes$value(''),
+																					_1: {ctor: '[]'}
+																				}
+																			}
+																		}
+																	}
+																}
+															},
+															{ctor: '[]'}),
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$html$Html$text(''),
+															_1: {ctor: '[]'}
+														}
+													}
+												}),
+											_1: {ctor: '[]'}
+										}
+									}),
+								_1: {
 									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$label,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$for('five_k_time'),
-											_1: {ctor: '[]'}
-										},
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html$text('5K time:'),
-											_1: {ctor: '[]'}
-										}),
+									_0: _tygerbytes$pacebyelm$RunType$viewRunTypes(model.runTypes),
 									_1: {
 										ctor: '::',
 										_0: A2(
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('input-group'),
-												_1: {ctor: '[]'}
+												_0: _elm_lang$html$Html_Attributes$class('form-group hidden'),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$id('form_field_units'),
+													_1: {ctor: '[]'}
+												}
 											},
 											{
 												ctor: '::',
 												_0: A2(
-													_elm_lang$html$Html$span,
+													_elm_lang$html$Html$label,
 													{
 														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('input-group-addon'),
+														_0: _elm_lang$html$Html_Attributes$for('units'),
 														_1: {ctor: '[]'}
 													},
 													{
 														ctor: '::',
-														_0: A2(
-															_elm_lang$html$Html$span,
-															{
-																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$class('glyphicon glyphicon-heart-empty'),
-																_1: {ctor: '[]'}
-															},
-															{ctor: '[]'}),
+														_0: _elm_lang$html$Html$text('Units:'),
 														_1: {ctor: '[]'}
 													}),
 												_1: {
 													ctor: '::',
 													_0: A2(
+														_elm_lang$html$Html$div,
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$class('input-group'),
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: A2(
+																_elm_lang$html$Html$span,
+																{
+																	ctor: '::',
+																	_0: _elm_lang$html$Html_Attributes$class('input-group-addon'),
+																	_1: {ctor: '[]'}
+																},
+																{
+																	ctor: '::',
+																	_0: _elm_lang$html$Html$text('📐'),
+																	_1: {ctor: '[]'}
+																}),
+															_1: {
+																ctor: '::',
+																_0: A2(
+																	_elm_lang$html$Html$select,
+																	{
+																		ctor: '::',
+																		_0: _elm_lang$html$Html_Attributes$class('form-control'),
+																		_1: {
+																			ctor: '::',
+																			_0: _elm_lang$html$Html_Attributes$id('units'),
+																			_1: {
+																				ctor: '::',
+																				_0: _elm_lang$html$Html_Attributes$name('units'),
+																				_1: {ctor: '[]'}
+																			}
+																		}
+																	},
+																	{
+																		ctor: '::',
+																		_0: A2(
+																			_elm_lang$html$Html$option,
+																			{
+																				ctor: '::',
+																				_0: _elm_lang$html$Html_Attributes$value('metric'),
+																				_1: {ctor: '[]'}
+																			},
+																			{
+																				ctor: '::',
+																				_0: _elm_lang$html$Html$text('Metric (Kilometers, Kilograms)'),
+																				_1: {ctor: '[]'}
+																			}),
+																		_1: {
+																			ctor: '::',
+																			_0: A2(
+																				_elm_lang$html$Html$option,
+																				{
+																					ctor: '::',
+																					_0: A2(_elm_lang$html$Html_Attributes$attribute, 'selected', 'selected'),
+																					_1: {
+																						ctor: '::',
+																						_0: _elm_lang$html$Html_Attributes$value('imperial'),
+																						_1: {ctor: '[]'}
+																					}
+																				},
+																				{
+																					ctor: '::',
+																					_0: _elm_lang$html$Html$text('Imperial (Miles, Pounds)'),
+																					_1: {ctor: '[]'}
+																				}),
+																			_1: {ctor: '[]'}
+																		}
+																	}),
+																_1: {ctor: '[]'}
+															}
+														}),
+													_1: {ctor: '[]'}
+												}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$div,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$class('form-group'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
 														_elm_lang$html$Html$input,
 														{
 															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$class('form-control'),
+															_0: _elm_lang$html$Html_Attributes$class('btn btn-primary'),
 															_1: {
 																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$id('five_k_time'),
+																_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-disable-with', 'Get your pace'),
 																_1: {
 																	ctor: '::',
-																	_0: _elm_lang$html$Html_Attributes$name('five_k_time'),
+																	_0: _elm_lang$html$Html_Attributes$name('commit'),
 																	_1: {
 																		ctor: '::',
-																		_0: _elm_lang$html$Html_Attributes$placeholder('Your most recent 5K race time; example, 21:30'),
+																		_0: _elm_lang$html$Html_Attributes$type_('submit'),
 																		_1: {
 																			ctor: '::',
-																			_0: _elm_lang$html$Html_Attributes$type_('text'),
-																			_1: {
-																				ctor: '::',
-																				_0: _elm_lang$html$Html_Attributes$value(''),
-																				_1: {ctor: '[]'}
-																			}
+																			_0: _elm_lang$html$Html_Attributes$value('Get your pace'),
+																			_1: {ctor: '[]'}
 																		}
 																	}
 																}
@@ -13745,40 +13902,6 @@ var _tygerbytes$pacebyelm$Pacebyelm$viewStatsForm = A2(
 														_0: _elm_lang$html$Html$text(''),
 														_1: {ctor: '[]'}
 													}
-												}
-											}),
-										_1: {ctor: '[]'}
-									}
-								}),
-							_1: {
-								ctor: '::',
-								_0: _tygerbytes$pacebyelm$RunType$viewRunTypes(_tygerbytes$pacebyelm$RunType$runTypes),
-								_1: {
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$div,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('form-group hidden'),
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$id('form_field_units'),
-												_1: {ctor: '[]'}
-											}
-										},
-										{
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$label,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$for('units'),
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html$text('Units:'),
-													_1: {ctor: '[]'}
 												}),
 											_1: {
 												ctor: '::',
@@ -13786,143 +13909,22 @@ var _tygerbytes$pacebyelm$Pacebyelm$viewStatsForm = A2(
 													_elm_lang$html$Html$div,
 													{
 														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('input-group'),
+														_0: A2(_elm_lang$html$Html_Attributes$attribute, 'style', 'margin-bottom: 40px'),
 														_1: {ctor: '[]'}
 													},
-													{
-														ctor: '::',
-														_0: A2(
-															_elm_lang$html$Html$span,
-															{
-																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$class('input-group-addon'),
-																_1: {ctor: '[]'}
-															},
-															{
-																ctor: '::',
-																_0: _elm_lang$html$Html$text('📐'),
-																_1: {ctor: '[]'}
-															}),
-														_1: {
-															ctor: '::',
-															_0: A2(
-																_elm_lang$html$Html$select,
-																{
-																	ctor: '::',
-																	_0: _elm_lang$html$Html_Attributes$class('form-control'),
-																	_1: {
-																		ctor: '::',
-																		_0: _elm_lang$html$Html_Attributes$id('units'),
-																		_1: {
-																			ctor: '::',
-																			_0: _elm_lang$html$Html_Attributes$name('units'),
-																			_1: {ctor: '[]'}
-																		}
-																	}
-																},
-																{
-																	ctor: '::',
-																	_0: A2(
-																		_elm_lang$html$Html$option,
-																		{
-																			ctor: '::',
-																			_0: _elm_lang$html$Html_Attributes$value('metric'),
-																			_1: {ctor: '[]'}
-																		},
-																		{
-																			ctor: '::',
-																			_0: _elm_lang$html$Html$text('Metric (Kilometers, Kilograms)'),
-																			_1: {ctor: '[]'}
-																		}),
-																	_1: {
-																		ctor: '::',
-																		_0: A2(
-																			_elm_lang$html$Html$option,
-																			{
-																				ctor: '::',
-																				_0: A2(_elm_lang$html$Html_Attributes$attribute, 'selected', 'selected'),
-																				_1: {
-																					ctor: '::',
-																					_0: _elm_lang$html$Html_Attributes$value('imperial'),
-																					_1: {ctor: '[]'}
-																				}
-																			},
-																			{
-																				ctor: '::',
-																				_0: _elm_lang$html$Html$text('Imperial (Miles, Pounds)'),
-																				_1: {ctor: '[]'}
-																			}),
-																		_1: {ctor: '[]'}
-																	}
-																}),
-															_1: {ctor: '[]'}
-														}
-													}),
+													{ctor: '[]'}),
 												_1: {ctor: '[]'}
 											}
-										}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$div,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('form-group'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$input,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('btn btn-primary'),
-														_1: {
-															ctor: '::',
-															_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-disable-with', 'Get your pace'),
-															_1: {
-																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$name('commit'),
-																_1: {
-																	ctor: '::',
-																	_0: _elm_lang$html$Html_Attributes$type_('submit'),
-																	_1: {
-																		ctor: '::',
-																		_0: _elm_lang$html$Html_Attributes$value('Get your pace'),
-																		_1: {ctor: '[]'}
-																	}
-																}
-															}
-														}
-													},
-													{ctor: '[]'}),
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html$text(''),
-													_1: {ctor: '[]'}
-												}
-											}),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$div,
-												{
-													ctor: '::',
-													_0: A2(_elm_lang$html$Html_Attributes$attribute, 'style', 'margin-bottom: 40px'),
-													_1: {ctor: '[]'}
-												},
-												{ctor: '[]'}),
-											_1: {ctor: '[]'}
 										}
 									}
 								}
 							}
 						}
 					}
-				}
-			}),
-		_1: {ctor: '[]'}
-	});
+				}),
+			_1: {ctor: '[]'}
+		});
+};
 var _tygerbytes$pacebyelm$Pacebyelm$viewStatsToggle = function (toggle) {
 	return A2(
 		_elm_lang$html$Html$a,
@@ -14200,7 +14202,7 @@ var _tygerbytes$pacebyelm$Pacebyelm$view = function (model) {
 										_0: _tygerbytes$pacebyelm$Pacebyelm$viewToggleButtons(model.toggles),
 										_1: {
 											ctor: '::',
-											_0: _tygerbytes$pacebyelm$Pacebyelm$viewStatsForm,
+											_0: _tygerbytes$pacebyelm$Pacebyelm$viewStatsForm(model),
 											_1: {ctor: '[]'}
 										}
 									}
@@ -14242,9 +14244,9 @@ var _tygerbytes$pacebyelm$Pacebyelm$update = F2(
 				{fiveKTime: '25:00'}),
 			{ctor: '[]'});
 	});
-var _tygerbytes$pacebyelm$Pacebyelm$Model = F2(
-	function (a, b) {
-		return {fiveKTime: a, toggles: b};
+var _tygerbytes$pacebyelm$Pacebyelm$Model = F3(
+	function (a, b, c) {
+		return {fiveKTime: a, toggles: b, runTypes: c};
 	});
 var _tygerbytes$pacebyelm$Pacebyelm$StatsToggle = F6(
 	function (a, b, c, d, e, f) {
@@ -14259,7 +14261,7 @@ var _tygerbytes$pacebyelm$Pacebyelm$initialToggles = {
 		_1: {ctor: '[]'}
 	}
 };
-var _tygerbytes$pacebyelm$Pacebyelm$initialModel = {fiveKTime: '25:00', toggles: _tygerbytes$pacebyelm$Pacebyelm$initialToggles};
+var _tygerbytes$pacebyelm$Pacebyelm$initialModel = {fiveKTime: '25:00', toggles: _tygerbytes$pacebyelm$Pacebyelm$initialToggles, runTypes: _tygerbytes$pacebyelm$RunType$runTypes};
 var _tygerbytes$pacebyelm$Pacebyelm$main = _elm_lang$html$Html$program(
 	{
 		init: {ctor: '_Tuple2', _0: _tygerbytes$pacebyelm$Pacebyelm$initialModel, _1: _tygerbytes$pacebyelm$Pacebyelm$loadRunnerStats},
