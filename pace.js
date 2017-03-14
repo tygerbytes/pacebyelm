@@ -13923,115 +13923,90 @@ var _tygerbytes$pacebyelm$Pacebyelm$viewStatsForm = A2(
 			}),
 		_1: {ctor: '[]'}
 	});
-var _tygerbytes$pacebyelm$Pacebyelm$viewToggleButtons = A2(
-	_elm_lang$html$Html$div,
-	{
-		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$class('form-group'),
-		_1: {ctor: '[]'}
-	},
-	{
-		ctor: '::',
-		_0: A2(
-			_elm_lang$html$Html$div,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('btn-group btn-group-md'),
-				_1: {
+var _tygerbytes$pacebyelm$Pacebyelm$viewStatsToggle = function (toggle) {
+	return A2(
+		_elm_lang$html$Html$a,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$classList(
+				{
 					ctor: '::',
-					_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-toggle', 'buttons'),
+					_0: {ctor: '_Tuple2', _0: 'btn', _1: true},
 					_1: {
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$id('fieldToggles'),
-						_1: {ctor: '[]'}
-					}
-				}
-			},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$a,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('btn btn-default active disabled'),
-						_1: {ctor: '[]'}
-					},
-					{
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$input,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$type_('checkbox'),
-								_1: {ctor: '[]'}
-							},
-							{ctor: '[]'}),
+						_0: {ctor: '_Tuple2', _0: 'btn-default', _1: true},
 						_1: {
 							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$span,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('glyphicon glyphicon-heart-empty'),
-									_1: {ctor: '[]'}
-								},
-								{ctor: '[]'}),
+							_0: {ctor: '_Tuple2', _0: 'active', _1: toggle.permanent || toggle.activated},
 							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html$text('Default'),
+								_0: {ctor: '_Tuple2', _0: 'disabled', _1: toggle.permanent},
 								_1: {ctor: '[]'}
 							}
 						}
-					}),
+					}
+				}),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$input,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$type_('checkbox'),
+					_1: {ctor: '[]'}
+				},
+				{ctor: '[]'}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$span,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class(
+							A2(_elm_lang$core$Basics_ops['++'], 'glyphicon ', toggle.glyphicon)),
+						_1: {ctor: '[]'}
+					},
+					{ctor: '[]'}),
 				_1: {
 					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$a,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('btn btn-default'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$input,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$id('toggle_units'),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$name('units'),
-										_1: {
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$type_('checkbox'),
-											_1: {ctor: '[]'}
-										}
-									}
-								},
-								{ctor: '[]'}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$span,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('glyphicon glyphicon-wrench'),
-										_1: {ctor: '[]'}
-									},
-									{ctor: '[]'}),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html$text('Units'),
-									_1: {ctor: '[]'}
-								}
-							}
-						}),
+					_0: _elm_lang$html$Html$text(toggle.text),
 					_1: {ctor: '[]'}
 				}
-			}),
-		_1: {ctor: '[]'}
-	});
+			}
+		});
+};
+var _tygerbytes$pacebyelm$Pacebyelm$viewToggleButtons = function (toggles) {
+	var toggleButtons = A2(_elm_lang$core$List$map, _tygerbytes$pacebyelm$Pacebyelm$viewStatsToggle, toggles);
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('form-group'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('btn-group btn-group-md'),
+					_1: {
+						ctor: '::',
+						_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-toggle', 'buttons'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$id('fieldToggles'),
+							_1: {ctor: '[]'}
+						}
+					}
+				},
+				toggleButtons),
+			_1: {ctor: '[]'}
+		});
+};
 var _tygerbytes$pacebyelm$Pacebyelm$viewJumbotron = A2(
 	_elm_lang$html$Html$div,
 	{
@@ -14222,7 +14197,7 @@ var _tygerbytes$pacebyelm$Pacebyelm$view = function (model) {
 										}),
 									_1: {
 										ctor: '::',
-										_0: _tygerbytes$pacebyelm$Pacebyelm$viewToggleButtons,
+										_0: _tygerbytes$pacebyelm$Pacebyelm$viewToggleButtons(model.toggles),
 										_1: {
 											ctor: '::',
 											_0: _tygerbytes$pacebyelm$Pacebyelm$viewStatsForm,
@@ -14267,7 +14242,24 @@ var _tygerbytes$pacebyelm$Pacebyelm$update = F2(
 				{fiveKTime: '25:00'}),
 			{ctor: '[]'});
 	});
-var _tygerbytes$pacebyelm$Pacebyelm$initialModel = {fiveKTime: '25:00'};
+var _tygerbytes$pacebyelm$Pacebyelm$Model = F2(
+	function (a, b) {
+		return {fiveKTime: a, toggles: b};
+	});
+var _tygerbytes$pacebyelm$Pacebyelm$StatsToggle = F6(
+	function (a, b, c, d, e, f) {
+		return {id: a, name: b, permanent: c, activated: d, glyphicon: e, text: f};
+	});
+var _tygerbytes$pacebyelm$Pacebyelm$initialToggles = {
+	ctor: '::',
+	_0: A6(_tygerbytes$pacebyelm$Pacebyelm$StatsToggle, 'toggle_default', 'default', true, true, 'glyphicon-heart-empty', 'Default'),
+	_1: {
+		ctor: '::',
+		_0: A6(_tygerbytes$pacebyelm$Pacebyelm$StatsToggle, 'toggle_units', 'units', false, false, 'glyphicon-wrench', 'Units'),
+		_1: {ctor: '[]'}
+	}
+};
+var _tygerbytes$pacebyelm$Pacebyelm$initialModel = {fiveKTime: '25:00', toggles: _tygerbytes$pacebyelm$Pacebyelm$initialToggles};
 var _tygerbytes$pacebyelm$Pacebyelm$main = _elm_lang$html$Html$program(
 	{
 		init: {ctor: '_Tuple2', _0: _tygerbytes$pacebyelm$Pacebyelm$initialModel, _1: _tygerbytes$pacebyelm$Pacebyelm$loadRunnerStats},
@@ -14277,9 +14269,6 @@ var _tygerbytes$pacebyelm$Pacebyelm$main = _elm_lang$html$Html$program(
 			return _elm_lang$core$Platform_Sub$none;
 		}
 	})();
-var _tygerbytes$pacebyelm$Pacebyelm$Model = function (a) {
-	return {fiveKTime: a};
-};
 var _tygerbytes$pacebyelm$Pacebyelm$LoadRunnerStats = {ctor: 'LoadRunnerStats'};
 
 var Elm = {};

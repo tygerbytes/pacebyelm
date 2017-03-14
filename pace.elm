@@ -16,19 +16,40 @@ import RunType
 
 type alias Model =
     { fiveKTime : String
+    , toggles : List StatsToggle
     }
+
 
 initialModel : Model
 initialModel =
     {
-        fiveKTime = "25:00"
+      fiveKTime = "25:00"
+    , toggles = initialToggles 
     }
+
+
+type alias StatsToggle =
+    { id : String
+    , name : String
+    , permanent : Bool
+    , activated : Bool
+    , glyphicon : String
+    , text : String
+    } 
+
+
+initialToggles : List StatsToggle
+initialToggles =
+    [ StatsToggle "toggle_default" "default" True  True  "glyphicon-heart-empty" "Default"
+    , StatsToggle "toggle_units"   "units"   False False "glyphicon-wrench"      "Units"
+    ]
 
 
 
 -- UPDATE
 
 type Msg = LoadRunnerStats
+
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
@@ -83,26 +104,31 @@ viewJumbotron =
       ]
 
 
-viewToggleButtons : Html Msg
-viewToggleButtons =
-  div [ class "form-group" ]
-      [ div [ class "btn-group btn-group-md", attribute "data-toggle" "buttons", id "fieldToggles" ]
-          [ a [ class "btn btn-default active disabled" ]
-              [ input [ type_ "checkbox" ]
-                  []
-              , span [ class "glyphicon glyphicon-heart-empty" ]
-                  []
-              , text "Default"
-              ]
-          , a [ class "btn btn-default" ]
-              [ input [ id "toggle_units", name "units", type_ "checkbox" ]
-                  []
-              , span [ class "glyphicon glyphicon-wrench" ]
-                   []
-              , text "Units"
-             ]
-          ]
+viewStatsToggle : StatsToggle -> Html Msg
+viewStatsToggle toggle =
+    a [ classList [ ("btn", True)
+                  , ("btn-default", True)
+                  , ("active", toggle.permanent || toggle.activated)
+                  , ("disabled", toggle.permanent) ] 
       ]
+        [ input [ type_ "checkbox" ]
+            []
+        , span [ class ("glyphicon " ++ toggle.glyphicon) ]
+            []
+        , text toggle.text
+        ]
+
+
+viewToggleButtons : List StatsToggle -> Html Msg
+viewToggleButtons toggles =
+    let
+        toggleButtons =
+            List.map (viewStatsToggle) toggles
+    in
+        div [ class "form-group" ]
+            [ div [ class "btn-group btn-group-md", attribute "data-toggle" "buttons", id "fieldToggles" ]
+              toggleButtons
+            ]
 
 
 viewStatsForm : Html Msg
@@ -177,7 +203,7 @@ view model =
             [ div [ class "col-md-6" ]
                 [ h2 []
                     [ text "Your stats and targets" ]
-                , viewToggleButtons
+                , viewToggleButtons model.toggles
                 , viewStatsForm
                 ]
             , div [ class "col-md-6" ]
