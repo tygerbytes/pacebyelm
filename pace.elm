@@ -22,7 +22,7 @@ type alias Model =
 
 initialModel : Model
 initialModel =
-    { fiveKTime = "25:00"
+    { fiveKTime = ""
     , toggles = initialToggles
     , runTypes = RunType.runTypes
     }
@@ -156,7 +156,7 @@ viewStatsForm model =
                         [ span [ class "glyphicon glyphicon-heart-empty" ]
                             []
                         ]
-                    , input [ class "form-control", id "five_k_time", name "five_k_time", placeholder "Your most recent 5K race time; example, 21:30", type_ "text", value "" ]
+                    , input [ class "form-control", id "five_k_time", name "five_k_time", placeholder "Your most recent 5K race time; example, 21:30", type_ "text", value model.fiveKTime ]
                         []
                     , text ""
                     ]
