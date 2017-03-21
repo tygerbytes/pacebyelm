@@ -51,6 +51,7 @@ initialToggles =
 
 type Msg
     = LoadRunnerStats
+    | Toggle String
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -58,6 +59,9 @@ update msg model =
     case msg of
         LoadRunnerStats ->
             { model | fiveKTime = "25:00" } ! []
+
+        Toggle toggleName ->
+            { model | toggles = toggleButtonWithName model.toggles toggleName } ! []
 
 
 
@@ -67,6 +71,18 @@ update msg model =
 loadRunnerStats : Cmd Msg
 loadRunnerStats =
     Cmd.none
+
+
+toggleButtonWithName : List StatsToggle -> String -> List StatsToggle
+toggleButtonWithName toggles toggleName =
+    let
+        toggleButton t =
+            if t.name == toggleName then
+                { t | activated = (not t.activated) }
+            else
+                t
+    in
+        List.map toggleButton toggles
 
 
 
@@ -109,8 +125,8 @@ viewJumbotron =
         ]
 
 
-viewStatsToggle : StatsToggle -> Html Msg
-viewStatsToggle toggle =
+viewStatsToggle : (String -> Msg) -> StatsToggle -> Html Msg
+viewStatsToggle msg toggle =
     a
         [ classList
             [ ( "btn", True )
@@ -118,6 +134,7 @@ viewStatsToggle toggle =
             , ( "active", toggle.permanent || toggle.activated )
             , ( "disabled", toggle.permanent )
             ]
+        , onClick (msg toggle.name)
         ]
         [ input [ type_ "checkbox" ]
             []
@@ -127,11 +144,11 @@ viewStatsToggle toggle =
         ]
 
 
-viewToggleButtons : List StatsToggle -> Html Msg
-viewToggleButtons toggles =
+viewToggleButtons : (String -> Msg) -> List StatsToggle -> Html Msg
+viewToggleButtons msg toggles =
     let
         toggleButtons =
-            List.map (viewStatsToggle) toggles
+            List.map (viewStatsToggle msg) toggles
     in
         div [ class "form-group" ]
             [ div [ class "btn-group btn-group-md", attribute "data-toggle" "buttons", id "fieldToggles" ]
@@ -211,7 +228,7 @@ view model =
             [ div [ class "col-md-6" ]
                 [ h2 []
                     [ text "Your stats and targets" ]
-                , viewToggleButtons model.toggles
+                , viewToggleButtons Toggle model.toggles
                 , viewStatsForm model
                 ]
             , div [ class "col-md-6" ]
