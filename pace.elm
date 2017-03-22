@@ -156,6 +156,40 @@ viewToggleButtons msg toggles =
             ]
 
 
+toggleActivated : List StatsToggle -> String -> Bool
+toggleActivated toggles name =
+    toggles
+        |> List.any (\t -> t.name == name && t.activated)
+
+
+viewStatsFormUnits : List StatsToggle -> Html Msg
+viewStatsFormUnits toggles =
+    let
+        unitsHidden =
+            not (toggleActivated toggles "units")
+    in
+        div
+            [ classList
+                [ ( "form-group", True )
+                , ( "hidden", unitsHidden )
+                ]
+            , id "form_field_units"
+            ]
+            [ label [ for "units" ]
+                [ text "Units:" ]
+            , div [ class "input-group" ]
+                [ span [ class "input-group-addon" ]
+                    [ text "📐" ]
+                , select [ class "form-control", id "units", name "units" ]
+                    [ option [ value "metric" ]
+                        [ text "Metric (Kilometers, Kilograms)" ]
+                    , option [ attribute "selected" "selected", value "imperial" ]
+                        [ text "Imperial (Miles, Pounds)" ]
+                    ]
+                ]
+            ]
+
+
 viewStatsForm : Model -> Html Msg
 viewStatsForm model =
     div [ id "calc_pace" ]
@@ -179,20 +213,7 @@ viewStatsForm model =
                     ]
                 ]
             , RunType.viewRunTypes model.runTypes
-            , div [ class "form-group hidden", id "form_field_units" ]
-                [ label [ for "units" ]
-                    [ text "Units:" ]
-                , div [ class "input-group" ]
-                    [ span [ class "input-group-addon" ]
-                        [ text "📐" ]
-                    , select [ class "form-control", id "units", name "units" ]
-                        [ option [ value "metric" ]
-                            [ text "Metric (Kilometers, Kilograms)" ]
-                        , option [ attribute "selected" "selected", value "imperial" ]
-                            [ text "Imperial (Miles, Pounds)" ]
-                        ]
-                    ]
-                ]
+            , viewStatsFormUnits model.toggles
             , div [ class "form-group" ]
                 [ input [ class "btn btn-primary", attribute "data-disable-with" "Get your pace", name "commit", type_ "submit", value "Get your pace" ]
                     []
