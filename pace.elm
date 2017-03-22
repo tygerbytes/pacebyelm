@@ -73,6 +73,12 @@ loadRunnerStats =
     Cmd.none
 
 
+toggleActivated : List StatsToggle -> String -> Bool
+toggleActivated toggles name =
+    toggles
+        |> List.any (\t -> t.name == name && t.activated)
+
+
 toggleButtonWithName : List StatsToggle -> String -> List StatsToggle
 toggleButtonWithName toggles toggleName =
     let
@@ -154,12 +160,6 @@ viewToggleButtons msg toggles =
             [ div [ class "btn-group btn-group-md", attribute "data-toggle" "buttons", id "fieldToggles" ]
                 toggleButtons
             ]
-
-
-toggleActivated : List StatsToggle -> String -> Bool
-toggleActivated toggles name =
-    toggles
-        |> List.any (\t -> t.name == name && t.activated)
 
 
 viewStatsFormUnits : List StatsToggle -> Html Msg
