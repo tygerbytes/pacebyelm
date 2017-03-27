@@ -1,0 +1,6 @@
+{
+    "paces": [
+        { "id": 1, "best_five_k_time": "20:00", "run_type": "EasyRun",     "target_pace_mi": "9:25-10:56 p/mi", "target_pace_km": "5:51-6:48 p/km", "target_speed_mph": "6:37-5.49 mi/ph", "target_pace_km": "5:51-6:48 p/km", "target_speed_kph": "10.26-8.82 km/ph" },
+        { "id": 2, "best_five_k_time": "20:00", "run_type": "DistanceRun",  "target_pace_mi": "8:14-9:24 p/mi", "target_pace_km": "5:07-5:51 p/km", "target_speed_mph": "7.29-6.38 mi/ph", "target_pace_km": "5:07-5:51 p/km", "target_speed_kph": "11.73-10.26 km/ph" }
+    ]
+}
