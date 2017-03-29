@@ -57,7 +57,7 @@ viewRunTypes runTypes =
             , div [ class "input-group" ]
                 [ span [ class "input-group-addon" ]
                     [ text "🏃" ]
-                , Html.select [ class "form-control", id "run_type", name "run_type" ]
+                , select [ class "form-control", id "run_type", name "run_type" ]
                     types
                 ]
             ]
