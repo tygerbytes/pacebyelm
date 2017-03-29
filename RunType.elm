@@ -21,12 +21,12 @@ runTypes =
     ]
 
 
-selectType : List RunType -> String -> RunType
-selectType runTypes runType =
+single : (RunType -> Bool) -> List RunType -> RunType
+single predicate runTypes =
     let
         selection =
             runTypes
-                |> List.filter (\t -> t.name == runType)
+                |> List.filter (\t -> predicate t)
                 |> List.head
     in
         case selection of
@@ -57,7 +57,7 @@ viewRunTypes runTypes =
             , div [ class "input-group" ]
                 [ span [ class "input-group-addon" ]
                     [ text "🏃" ]
-                , select [ class "form-control", id "run_type", name "run_type" ]
+                , Html.select [ class "form-control", id "run_type", name "run_type" ]
                     types
                 ]
             ]

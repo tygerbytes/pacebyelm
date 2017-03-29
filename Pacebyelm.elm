@@ -59,7 +59,8 @@ initialOptions : SelectedOptions
 initialOptions =
     let
         distanceRun =
-            RunType.selectType RunType.runTypes "DistanceRun"
+            RunType.runTypes
+                |> RunType.single (\t -> t.name == "DistanceRun")
     in
         SelectedOptions "" "5K" distanceRun "imperial"
 
