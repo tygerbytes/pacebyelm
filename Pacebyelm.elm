@@ -17,6 +17,7 @@ type alias Model =
     { fiveKTime : String
     , toggles : List StatsToggle
     , runTypes : List RunType.RunType
+    , selections : SelectedOptions
     }
 
 
@@ -25,6 +26,7 @@ initialModel =
     { fiveKTime = ""
     , toggles = initialToggles
     , runTypes = RunType.runTypes
+    , selections = initialOptions
     }
 
 
@@ -43,6 +45,23 @@ initialToggles =
     [ StatsToggle "toggle_default" "default" True True "glyphicon-heart-empty" "Default"
     , StatsToggle "toggle_units" "units" False False "glyphicon-wrench" "Units"
     ]
+
+
+type alias SelectedOptions =
+    { definingRaceTime : String
+    , definingRaceType : String
+    , targetRunType : RunType.RunType
+    , units : String
+    }
+
+
+initialOptions : SelectedOptions
+initialOptions =
+    let
+        distanceRun =
+            RunType.selectType RunType.runTypes "DistanceRun"
+    in
+        SelectedOptions "" "5K" distanceRun "imperial"
 
 
 
