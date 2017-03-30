@@ -2,7 +2,7 @@ module Pacebyelm exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onClick)
+import Html.Events exposing (onClick, onInput)
 import Http
 import Json.Decode as Decode exposing (Decoder, field, succeed)
 import Json.Encode as Encode
@@ -14,8 +14,7 @@ import RunType
 
 
 type alias Model =
-    { fiveKTime : String
-    , toggles : List StatsToggle
+    { toggles : List StatsToggle
     , runTypes : List RunType.RunType
     , selections : SelectedOptions
     }
@@ -23,8 +22,7 @@ type alias Model =
 
 initialModel : Model
 initialModel =
-    { fiveKTime = ""
-    , toggles = initialToggles
+    { toggles = initialToggles
     , runTypes = RunType.runTypes
     , selections = initialOptions
     }
@@ -70,18 +68,36 @@ initialOptions =
 
 
 type Msg
-    = LoadRunnerStats
-    | Toggle String
+    = Toggle String
+    | UpdateUnitsSelection String
+    | UpdateDefiningRaceTime String
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        LoadRunnerStats ->
-            { model | fiveKTime = "25:00" } ! []
-
         Toggle toggleName ->
             { model | toggles = toggleButtonWithName model.toggles toggleName } ! []
+
+        UpdateDefiningRaceTime time ->
+            let
+                currentSelections =
+                    model.selections
+
+                newSelections =
+                    { currentSelections | definingRaceTime = time }
+            in
+                { model | selections = newSelections } ! []
+
+        UpdateUnitsSelection units ->
+            let
+                currentSelections =
+                    model.selections
+
+                newSelections =
+                    { currentSelections | units = units }
+            in
+                { model | selections = newSelections } ! []
 
 
 
@@ -200,7 +216,12 @@ viewStatsFormUnits toggles =
             , div [ class "input-group" ]
                 [ span [ class "input-group-addon" ]
                     [ text "📐" ]
-                , select [ class "form-control", id "units", name "units" ]
+                , select
+                    [ class "form-control"
+                    , id "units"
+                    , name "units"
+                    , onInput UpdateUnitsSelection
+                    ]
                     [ option [ value "metric" ]
                         [ text "Metric (Kilometers, Kilograms)" ]
                     , option [ attribute "selected" "selected", value "imperial" ]
@@ -217,7 +238,8 @@ viewStatsForm model =
             [ input [ name "utf8", type_ "hidden", value "✓" ]
                 []
             , text ""
-            , input [ id "activated_toggles", name "activated_toggles", type_ "hidden", value "" ]
+            , input
+                [ id "activated_toggles", name "activated_toggles", type_ "hidden", value "" ]
                 []
             , div [ class "form-group" ]
                 [ label [ for "five_k_time" ]
@@ -227,7 +249,15 @@ viewStatsForm model =
                         [ span [ class "glyphicon glyphicon-heart-empty" ]
                             []
                         ]
-                    , input [ class "form-control", id "five_k_time", name "five_k_time", placeholder "Your most recent 5K race time; example, 21:30", type_ "text", value model.fiveKTime ]
+                    , input
+                        [ class "form-control"
+                        , id "five_k_time"
+                        , name "five_k_time"
+                        , placeholder "Your most recent 5K race time; example, 21:30"
+                        , type_ "text"
+                        , value model.selections.definingRaceTime
+                        , onInput UpdateDefiningRaceTime
+                        ]
                         []
                     , text ""
                     ]
