@@ -71,6 +71,7 @@ type Msg
     = Toggle String
     | UpdateUnitsSelection String
     | UpdateDefiningRaceTime String
+    | UpdateRunTypeSelection String
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -96,6 +97,20 @@ update msg model =
 
                 newSelections =
                     { currentSelections | units = units }
+            in
+                { model | selections = newSelections } ! []
+
+        UpdateRunTypeSelection runTypeName ->
+            let
+                currentSelections =
+                    model.selections
+
+                runType =
+                    RunType.runTypes
+                        |> RunType.single (\t -> t.name == runTypeName)
+
+                newSelections =
+                    { currentSelections | targetRunType = runType }
             in
                 { model | selections = newSelections } ! []
 
@@ -262,7 +277,7 @@ viewStatsForm model =
                     , text ""
                     ]
                 ]
-            , RunType.viewRunTypes model.runTypes
+            , RunType.viewRunTypes UpdateRunTypeSelection model.runTypes
             , viewStatsFormUnits model.toggles
             , div [ class "form-group" ]
                 [ input [ class "btn btn-primary", attribute "data-disable-with" "Get your pace", name "commit", type_ "submit", value "Get your pace" ]

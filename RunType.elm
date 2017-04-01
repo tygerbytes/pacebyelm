@@ -2,6 +2,7 @@ module RunType exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Html.Events exposing (onInput)
 
 
 type alias RunType =
@@ -45,8 +46,8 @@ viewRunTypeItem runType =
         [ text runType.description ]
 
 
-viewRunTypes : List RunType -> Html msg
-viewRunTypes runTypes =
+viewRunTypes : (String -> msg) -> List RunType -> Html msg
+viewRunTypes msg runTypes =
     let
         types =
             List.map (viewRunTypeItem) runTypes
@@ -57,7 +58,12 @@ viewRunTypes runTypes =
             , div [ class "input-group" ]
                 [ span [ class "input-group-addon" ]
                     [ text "🏃" ]
-                , select [ class "form-control", id "run_type", name "run_type" ]
+                , select
+                    [ class "form-control"
+                    , id "run_type"
+                    , name "run_type"
+                    , onInput msg
+                    ]
                     types
                 ]
             ]
