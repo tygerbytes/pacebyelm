@@ -399,7 +399,7 @@ view model =
                 , viewStatsForm model
                 ]
             , div [ class "col-md-6" ]
-                [ TargetPace.viewTargetPacePanel model.targetPace ]
+                [ TargetPace.viewTargetPacePanel model.targetPace model.selections.units ]
             ]
         , viewFooter
         ]
