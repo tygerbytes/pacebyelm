@@ -17,6 +17,8 @@ type alias Model =
     { toggles : List StatsToggle
     , runTypes : List RunType.RunType
     , selections : SelectedOptions
+    , targetPace : Maybe TargetPace.TargetPace
+    , alertMessage : Maybe String
     }
 
 
@@ -25,6 +27,8 @@ initialModel =
     { toggles = initialToggles
     , runTypes = RunType.runTypes
     , selections = initialOptions
+    , targetPace = Nothing
+    , alertMessage = Nothing
     }
 
 
@@ -72,6 +76,8 @@ type Msg
     | UpdateUnitsSelection String
     | UpdateDefiningRaceTime String
     | UpdateRunTypeSelection String
+    | GetTargetPace
+    | NewTargetPace (Result Http.Error (List TargetPace.TargetPace))
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -114,9 +120,78 @@ update msg model =
             in
                 { model | selections = newSelections } ! []
 
+        GetTargetPace ->
+            let
+                cmd =
+                    getTargetPace model.selections
+            in
+                ( { model | alertMessage = Nothing }, cmd )
+
+        NewTargetPace (Ok targetPaces) ->
+            let
+                targetPace =
+                    List.head targetPaces
+            in
+                { model | targetPace = targetPace } ! []
+
+        NewTargetPace (Err error) ->
+            let
+                _ =
+                    Debug.log "it failed!" error
+            in
+                { model | alertMessage = Just (httpErrorToMessage error) } ! []
+
+
+httpErrorToMessage : Http.Error -> String
+httpErrorToMessage error =
+    case error of
+        Http.NetworkError ->
+            "Network error"
+
+        Http.BadStatus response ->
+            case response.status.code of
+                401 ->
+                    "Unauthorized"
+
+                404 ->
+                    "Resource not found"
+
+                otherCode ->
+                    (toString otherCode)
+
+        Http.BadPayload message _ ->
+            "Decoding failed: " ++ message
+
+        Http.Timeout ->
+            "Request timed out!"
+
+        _ ->
+            (toString error)
+
 
 
 -- COMMANDS
+
+
+apiUriPrefix : String
+apiUriPrefix =
+    "http://localhost:3000"
+
+
+getTargetPace : SelectedOptions -> Cmd Msg
+getTargetPace selections =
+    let
+        encodedUri =
+            apiUriPrefix
+                ++ "/paces?"
+                ++ "best_five_k_time="
+                ++ selections.definingRaceTime
+                ++ "&run_type="
+                ++ selections.targetRunType.name
+                ++ "&units="
+                ++ selections.units
+    in
+        TargetPace.getTargetPaces NewTargetPace encodedUri
 
 
 loadRunnerStats : Cmd Msg
@@ -249,7 +324,7 @@ viewStatsFormUnits toggles =
 viewStatsForm : Model -> Html Msg
 viewStatsForm model =
     div [ id "calc_pace" ]
-        [ Html.form [ attribute "accept-charset" "UTF-8", action "/target_pace/calc", attribute "data-remote" "true", method "post" ]
+        [ Html.form [ attribute "accept-charset" "UTF-8" ]
             [ input [ name "utf8", type_ "hidden", value "✓" ]
                 []
             , text ""
@@ -280,7 +355,13 @@ viewStatsForm model =
             , RunType.viewRunTypes UpdateRunTypeSelection model.runTypes
             , viewStatsFormUnits model.toggles
             , div [ class "form-group" ]
-                [ input [ class "btn btn-primary", attribute "data-disable-with" "Get your pace", name "commit", type_ "submit", value "Get your pace" ]
+                [ input
+                    [ class "btn btn-primary"
+                    , attribute "data-disable-with" "Get your pace"
+                    , name "commit"
+                    , value "Get your pace"
+                    , onClick GetTargetPace
+                    ]
                     []
                 , text ""
                 ]
@@ -318,7 +399,7 @@ view model =
                 , viewStatsForm model
                 ]
             , div [ class "col-md-6" ]
-                [ TargetPace.viewTargetPacePanel ]
+                [ TargetPace.viewTargetPacePanel model.targetPace ]
             ]
         , viewFooter
         ]
